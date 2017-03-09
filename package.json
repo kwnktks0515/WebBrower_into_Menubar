@@ -1,0 +1,28 @@
+{
+  "name": "webbrower_into_menubar",
+  "version": "1.0.0",
+  "description": "webbrower into menubar",
+  "main": "main.js",
+  "dependencies": {
+    "menubar": "^5.2.3"
+  },
+  "devDependencies": {
+    "electron-connect": "^0.6.1",
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "run-script": "electron .",
+    "task": "gulp",
+    "build": "electron-packager . wbim --platform=darwin --arch=x64 --electron-version=1.4.13 --overwrite"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kwnktks0515/WebBrower_into_Menubar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kwnktks0515/WebBrower_into_Menubar/issues"
+  },
+  "homepage": "https://github.com/kwnktks0515/WebBrower_into_Menubar#readme"
+}

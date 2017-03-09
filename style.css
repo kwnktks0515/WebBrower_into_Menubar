@@ -1,0 +1,61 @@
+html {
+    width:100%;
+    height:100%
+}
+body {
+    margin:0;
+    padding:0;
+    width:100%;
+    height:100%;
+}
+header {
+    width:100%;
+    height:40px;
+    border-bottom:ridge #0000ff;
+}
+
+.tabs {
+    display: none;
+}
+header > #url {
+    width: calc(100% - 150px);
+}
+header > div {
+    border-bottom:ridge #000000;
+}
+header > div > label {
+    background-color: #e1fae1;
+}
+
+#view-container > webview {
+    /*display: none;*/
+}
+/*
+#tab1:checked ~ #view-container > #view1 {
+    display: block;
+}
+#tab2:checked ~ #view-container > #view2 {
+    display: block;
+}
+#tab3:checked ~ #view-container > #view3 {
+    display: block;
+}
+#tab4:checked ~ #view-container > #view4 {
+    display: block;
+}
+#tab5:checked ~ #view-container > #view5 {
+    display: block;
+}
+#tab6:checked ~ #view-container > #view6 {
+    display: block;
+}
+*/
+#view-container {
+    width:100%;
+    height:calc(100% - 40px);
+}
+
+#view-container > webview {
+    width:100%;
+    height:100%;
+}
