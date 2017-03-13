@@ -1,9 +1,10 @@
 {
   "name": "webbrower_into_menubar",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "webbrower into menubar",
   "main": "main.js",
   "dependencies": {
+    "menu": "^0.2.5",
     "menubar": "^5.2.3"
   },
   "devDependencies": {
@@ -11,9 +12,12 @@
     "gulp": "^3.9.1"
   },
   "scripts": {
-    "run-script": "electron .",
+    "start": "electron .",
     "task": "gulp",
     "build": "electron-packager . wbim --platform=darwin --arch=x64 --electron-version=1.4.13 --overwrite"
+  },
+  "config": {
+    "mode": 0
   },
   "repository": {
     "type": "git",
