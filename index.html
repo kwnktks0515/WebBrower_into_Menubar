@@ -6,14 +6,22 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input id="tab1" class="tabs" type="radio" name="tab" checked>
-    <input id="tab2" class="tabs" type="radio" name="tab">
-    <!--
-    <input id="tab3" class="tabs" type="radio" name="tab">
-    <input id="tab4" class="tabs" type="radio" name="tab">
-    <input id="tab5" class="tabs" type="radio" name="tab">
-    <input id="tab6" class="tabs" type="radio" name="tab">
-    -->
+    <div id="hide">
+        <input id="tab1" class="tabs" type="radio" name="tab" checked>
+        <!--
+        <input id="tab2" class="tabs" type="radio" name="tab">
+        <input id="tab3" class="tabs" type="radio" name="tab">
+        <input id="tab4" class="tabs" type="radio" name="tab">
+        <input id="tab5" class="tabs" type="radio" name="tab">
+        <input id="tab6" class="tabs" type="radio" name="tab">
+        -->
+        
+        <input type="button" id="back" onclick="Back()">
+        <input type="button" id="forword" onclick="Forword()">
+        <input type="button" id="reload" onclick="Reload()">
+        <input type="button" id="homepage" onclick="HomePage()">
+        <input type="button" id="setting" onclick="Setting()">
+    </div>
     <header>
         <div>
             <label for="tab1">Tab1</label>
@@ -24,13 +32,16 @@
             <label for="tab5">Tab5</label>
             <label for="tab6">Tab6</label>
             -->
-
         </div>
-        <button id="back" type="button" onclick="Back()">👈</button>
-        <button id="forword" type="button" onclick="Forword()">👉</button>
-        <button id="reload" type="button" onclick="Reload()">🔄</button>
-        <button id="homepage" type="button" onclick="HomePage()">🏠</button>
+        <!--
+        <button id="add" type="button" onclick="AddTab()">➕<button>
+        -->
+        <label for="back">👈</label>
+        <label for="forword">👉</label>
+        <label for="reload">🔄</label>
+        <label for="homepage">🏠</label>
         <input id="url" type="text" value="https://google.co.jp" onkeypress="KeyPressed(event);">
+        <label for="setting">⚙</button>
     </header>
     <div id="view-container">
         <webview id="view1" src="https://google.co.jp"></webview>

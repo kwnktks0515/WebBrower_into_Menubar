@@ -34,5 +34,9 @@ function Reload() {
 }
 
 function HomePage() {
-    
+    dom.loadURL("http://www.google.co.jp")
+}
+
+function Setting() {
+
 }
