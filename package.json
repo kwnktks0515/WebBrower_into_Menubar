@@ -17,7 +17,7 @@
     "build": "electron-packager . wbim --platform=darwin --arch=x64 --electron-version=1.4.13 --overwrite"
   },
   "config": {
-    "mode": 1
+    "mode": 0
   },
   "repository": {
     "type": "git",

@@ -5,7 +5,27 @@ var menubar = require('menubar')
 var Menu = electron.Menu
 
 if(process.env.npm_package_config_mode == 0) {
-    //---- build ----
+    //---- Test ----
+    var app = electron.app;
+    var BrowserWindow = electron.BrowserWindow;
+
+    var mainWindow = null;
+
+    app.on('window-all-closed', function() {
+        if (process.platform != 'darwin')
+            app.quit();
+    });
+
+    app.on('ready', function() {
+        mainWindow = new BrowserWindow({width: 800, height: 600});
+        mainWindow.loadURL('file://' + __dirname + '/index.html');
+            mainWindow.toggleDevTools();
+        mainWindow.on('closed', function() {
+            mainWindow = null;
+        });
+    });
+} else {
+    //--- Build ---
     var mb = menubar({})
     var app = mb.app
     var window = mb.window
@@ -18,27 +38,6 @@ if(process.env.npm_package_config_mode == 0) {
         //window.toggleDevTools();
         Menu.setApplicationMenu(menu)
     })
-} else {
-    //---Test---
-    var app = electron.app;
-    var BrowserWindow = electron.BrowserWindow;
-
-    var mainWindow = null;
-
-    app.on('window-all-closed', function() {
-        if (process.platform != 'darwin')
-            app.quit();
-    });
-
-    app.on('ready', function() {
-
-        mainWindow = new BrowserWindow({width: 800, height: 600});
-        mainWindow.loadURL('file://' + __dirname + '/index.html');
-            mainWindow.toggleDevTools();
-        mainWindow.on('closed', function() {
-            mainWindow = null;
-        });
-    });
 }
 
 function WindowSetting(width=-1, height=-1, x=-1, y=-1) {

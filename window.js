@@ -14,7 +14,6 @@ function KeyPressed(event) {
     console.log(event.target.value)
     if(event.keyCode!=13) return;
     dom.loadURL(event.target.value)
-    
 }
 
 function Back() {
