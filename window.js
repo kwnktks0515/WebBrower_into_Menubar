@@ -1,41 +1,52 @@
 'use strict';
- 
-var dom = null
+
+var activetab = 0
+var maxtab = 2
+var dom = []
 var input = null
+
 window.onload = function () {
-    dom = document.getElementById("view1")
+    dom.push(document.getElementById("view1"))
+    dom.push(document.getElementById("view2"))
     input = document.getElementById("url")
-    dom.addEventListener("load-commit", () => {
-        input.value = dom.getURL()
-    })
+    for(var i = 0;i < dom.length;i++) {
+        dom[i].addEventListener("load-commit", (event) => {
+            input.value = event.target.getURL()
+        })
+    }
 }
 
 function KeyPressed(event) {
     console.log(event.target.value)
     if(event.keyCode!=13) return;
-    dom.loadURL(event.target.value)
+    dom[activetab].loadURL(event.target.value)
 }
 
 function Back() {
-    if(dom.canGoBack()) {
-        dom.goBack()
+    if(dom[activetab].canGoBack()) {
+        dom[activetab].goBack()
     }
 }
 
 function Forword() {
-    if(dom.canGoForward()) {
-        dom.goForward()
+    if(dom[activetab].canGoForward()) {
+        dom[activetab].goForward()
     }
 }
 
 function Reload() {
-    dom.reload()
+    dom[activetab].reload()
 }
 
 function HomePage() {
-    dom.loadURL("http://www.google.co.jp")
+    dom[activetab].loadURL("http://www.google.co.jp")
 }
 
 function Setting() {
 
+}
+
+function ChangeTab(num) {
+    activetab = num
+    input.value = dom[activetab].getURL()
 }
