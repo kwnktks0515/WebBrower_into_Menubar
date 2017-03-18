@@ -26,6 +26,10 @@ header > div {
     background-color: #e1fae1;
 }
 
+#tabs > input[type=radio]:checked + label {
+    background-color: #51fae1;
+}
+
 #view-container {
     width:100%;
     height:calc(100% - 50px);

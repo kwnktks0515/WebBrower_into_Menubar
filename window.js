@@ -9,6 +9,7 @@ var homepageurl = "https://google.co.jp"
 window.onload = function () {
     var fragment = document.createDocumentFragment()
     for(var i = 0;i < maxtabs;i++) {
+        //radio
         var element = document.createElement("input")
         element.id = "tab" + (i + 1)
         element.className = "hide"
@@ -19,10 +20,7 @@ window.onload = function () {
             element.checked = true
         }
         fragment.appendChild(element)
-    }
-    document.body.insertBefore(fragment, document.getElementById("back"))
-    fragment = document.createDocumentFragment()
-    for(var i = 0;i < maxtabs;i++) {
+        //label
         var label = document.createElement("label")
         label.setAttribute("for", "tab" + (i + 1))
         label.textContent = "Tab" + (i + 1)
