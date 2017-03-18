@@ -6,31 +6,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <input id="tab1" class="tabs hide" type="radio" onclick="ChangeTab(0)" name="tab" checked>
-    <input id="tab2" class="tabs hide" type="radio" onclick="ChangeTab(1)" name="tab">
-    <!--
-    
-    <input id="tab3" class="tabs" type="radio" name="tab">
-    <input id="tab4" class="tabs" type="radio" name="tab">
-    <input id="tab5" class="tabs" type="radio" name="tab">
-    <input id="tab6" class="tabs" type="radio" name="tab">
-    -->
-    
     <input type="button" class="hide" id="back" onclick="Back()">
     <input type="button" class="hide" id="forword" onclick="Forword()">
     <input type="button" class="hide" id="reload" onclick="Reload()">
     <input type="button" class="hide" id="homepage" onclick="HomePage()">
     <input type="button" class="hide" id="setting" onclick="Setting()">
     <header>
-        <div>
-            <label for="tab1">Tab1</label>
-            <label for="tab2">Tab2</label>
-            <!--
-            <label for="tab3">Tab3</label>
-            <label for="tab4">Tab4</label>
-            <label for="tab5">Tab5</label>
-            <label for="tab6">Tab6</label>
-            -->
+        <div id="tabs">
         </div>
         <!--
         <button id="add" type="button" onclick="AddTab()">➕<button>
@@ -39,17 +21,17 @@
         <label class="icon" for="forword">👉</label>
         <label class="icon" for="reload">🔄</label>
         <label class="icon" for="homepage">🏠</label>
-        <input id="url" type="text" value="https://google.co.jp" onkeypress="KeyPressed(event);">
+        <input id="url" type="text" onkeypress="KeyPressed(event);">
         <label class="icon" for="setting">⚙</label>
     </header>
     <div id="view-container">
-        <webview id="view1" class="hide" src="https://google.co.jp"></webview>
+        <webview id="view1" class="" src="https://google.co.jp"></webview>
         <webview id="view2" class="hide" src="https://google.co.jp"></webview>
         <!--　
         <webview id="view3" src="./first.html"></webview>
         <webview id="view4" src="./second.html"></webview>
         <webview id="view5" src="./first.html"></webview>
-        <webview id="view6" src="./second.html"></webview>
+
         -->
     </div>
     <script>require('electron-connect').client.create()</script>
