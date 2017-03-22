@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <script src="lib.js"></script>
     <script src="window.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -25,14 +26,6 @@
         <label class="icon" for="setting">⚙</label>
     </header>
     <div id="view-container">
-        <webview id="view1" class="" src="https://google.co.jp"></webview>
-        <webview id="view2" class="hide" src="https://google.co.jp"></webview>
-        <!--　
-        <webview id="view3" src="./first.html"></webview>
-        <webview id="view4" src="./second.html"></webview>
-        <webview id="view5" src="./first.html"></webview>
-
-        -->
     </div>
     <script>require('electron-connect').client.create()</script>
 </body>
