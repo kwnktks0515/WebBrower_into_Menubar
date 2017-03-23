@@ -1,5 +1,7 @@
 # WebBrower_into_Menubar
-Embeds web brower in menu bar
+Embeds web brower in menu bar  
+Only macOS
+
 
 # What to do next
 - Implementation of multiple tabs

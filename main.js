@@ -3,6 +3,8 @@
 var electron = require('electron')
 var menubar = require('menubar')
 var Menu = electron.Menu
+var Config = require('electron-config');
+var config = new Config();
 
 if(process.env.npm_package_config_mode == 0) {
     //---- Test ----
@@ -31,20 +33,35 @@ if(process.env.npm_package_config_mode == 0) {
     var window = mb.window
     var tray = mb.tray
 
-    mb.on('ready', function ready () {
-        console.log('app is ready')
-        var size = electron.screen.getPrimaryDisplay().workAreaSize;
-        WindowSetting(size.width/2, size.height/2, size.width)
-        //window.toggleDevTools();
+    mb.on('ready', function() {
+        WindowSetting(config.get("width"), config.get("height"), config.get("position"))
         Menu.setApplicationMenu(menu)
     })
 }
 
-function WindowSetting(width=-1, height=-1, x=-1, y=-1) {
-    if(width != -1) mb.setOption("width", width)
-    if(height != -1) mb.setOption("height", height);
-    if(x != -1) mb.setOption("x", x)
-    if(y != -1) mb.setOption("y", y)
+function WindowSetting(width=-1, height=-1, pos=1) {
+    var size = electron.screen.getPrimaryDisplay().workAreaSize;
+    if(0 < width && 0 < height) {
+        mb.setOption("width", width)
+        mb.setOption("height", height)
+    } else {
+        mb.setOption("width", size.width/2)
+        mb.setOption("height", size.height/2);
+    }
+    switch(pos) {
+        case 0:
+            mb.setOption("windowPosition", "topLeft")
+            break
+        case 1:
+            mb.setOption("windowPosition", "topRight")
+            break
+        case 2:
+            mb.setOption("windowPosition", "bottomLeft")
+            break
+        case 3:
+            mb.setOption("windowPosition", "bottomRight")
+            break
+    }
 }
 
 var menu = Menu.buildFromTemplate([

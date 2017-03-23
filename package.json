@@ -4,6 +4,7 @@
   "description": "webbrower into menubar",
   "main": "main.js",
   "dependencies": {
+    "electron-config": "^0.2.1",
     "menu": "^0.2.5",
     "menubar": "^5.2.3"
   },
