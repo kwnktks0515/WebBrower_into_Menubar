@@ -1,7 +1,6 @@
 'use strict';
 
 var activetab = 0
-var maxtabs = 2
 var dom = []
 var input = null
 var tab = null
@@ -12,7 +11,7 @@ window.onload = function () {
         webview_elements = document.createDocumentFragment()
     tab = new tab_maneger()
     input = document.getElementById("url")
-    for(var i = 0;i < maxtabs;i++) {
+    for(var i = 0;i < 2;i++) {
         //input
         var input_clone = tab.get_input_model()
         if(i == 0) input_clone.checked = true
@@ -33,6 +32,23 @@ window.onload = function () {
     }
     document.getElementById("tabs").appendChild(tab_elements)
     document.getElementById("view-container").appendChild(webview_elements)
+}
+
+function AddTab() {
+    var webview_clone = tab.get_webview_model()
+    webview_clone.className = "hide"
+    webview_clone.addEventListener("load-commit", (event) => {
+        input.value = event.target.getURL()
+        //console.log(event.target.getTitle())
+    })
+    dom.push(webview_clone)
+    document.getElementById("tabs").appendChild(tab.get_tab_model())
+    document.getElementById("view-container").appendChild(webview_clone)
+    tab.add()
+}
+
+function RemoveTab() {
+    tab.take()
 }
 
 function KeyPressed(event) {
@@ -59,7 +75,14 @@ function HomePage() {
 }
 
 function Setting() {
+    
+}
 
+function Mute() {
+    if(dom[activetab].isAudioMuted())
+        dom[activetab].setAudioMuted(false)
+    else
+        dom[activetab].setAudioMuted(true)
 }
 
 function ChangeTab(num) {

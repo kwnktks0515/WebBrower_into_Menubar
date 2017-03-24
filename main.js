@@ -61,6 +61,9 @@ function WindowSetting(width=-1, height=-1, pos=1) {
         case 3:
             mb.setOption("windowPosition", "bottomRight")
             break
+        default:
+            mb.setOption("windowPosition", "topLeft")
+            break
     }
 }
 
