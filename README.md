@@ -4,8 +4,8 @@ Only macOS
 
 
 # What to do next
-- Implementation of multiple tabs
 - Implementation of setting menu
 - Preparation of icon
 - Change to new design
+- Weight saving
 - etc

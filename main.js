@@ -1,8 +1,8 @@
 'use strict';
 
-var electron = require('electron')
-var menubar = require('menubar')
-var Menu = electron.Menu
+var electron = require('electron');
+var menubar = require('menubar');
+var Menu = electron.Menu;
 var Config = require('electron-config');
 var config = new Config();
 
@@ -10,7 +10,7 @@ if(process.env.npm_package_config_mode == 0) {
     //---- Test ----
     var app = electron.app;
     var BrowserWindow = electron.BrowserWindow;
-
+    
     var mainWindow = null;
 
     app.on('window-all-closed', function() {
@@ -28,42 +28,42 @@ if(process.env.npm_package_config_mode == 0) {
     });
 } else {
     //--- Build ---
-    var mb = menubar({})
-    var app = mb.app
-    var window = mb.window
-    var tray = mb.tray
+    var mb = menubar({});
+    var app = mb.app;
+    var window = mb.window;
+    var tray = mb.tray;
 
     mb.on('ready', function() {
-        WindowSetting(config.get("width"), config.get("height"), config.get("position"))
-        Menu.setApplicationMenu(menu)
+        WindowSetting(config.get("width"), config.get("height"), config.get("position"));
+        Menu.setApplicationMenu(menu);
     })
 }
 
 function WindowSetting(width=-1, height=-1, pos=1) {
     var size = electron.screen.getPrimaryDisplay().workAreaSize;
     if(0 < width && 0 < height) {
-        mb.setOption("width", width)
-        mb.setOption("height", height)
+        mb.setOption("width", width);
+        mb.setOption("height", height);
     } else {
-        mb.setOption("width", size.width/2)
+        mb.setOption("width", size.width/2);
         mb.setOption("height", size.height/2);
     }
     switch(pos) {
         case 0:
-            mb.setOption("windowPosition", "topLeft")
-            break
+            mb.setOption("windowPosition", "topLeft");
+            break;
         case 1:
-            mb.setOption("windowPosition", "topRight")
-            break
+            mb.setOption("windowPosition", "topRight");
+            break;
         case 2:
-            mb.setOption("windowPosition", "bottomLeft")
-            break
+            mb.setOption("windowPosition", "bottomLeft");
+            break;
         case 3:
-            mb.setOption("windowPosition", "bottomRight")
-            break
+            mb.setOption("windowPosition", "bottomRight");
+            break;
         default:
-            mb.setOption("windowPosition", "topLeft")
-            break
+            mb.setOption("windowPosition", "topLeft");
+            break;
     }
 }
 
