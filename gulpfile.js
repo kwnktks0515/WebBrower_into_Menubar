@@ -5,5 +5,5 @@ var gulp = require("gulp"),
 gulp.task('default', function () {
     electron.start();
     gulp.watch(['./main.js', './index.html'], electron.restart);
-    gulp.watch(['./style.css', './first.html', 'window.js'], electron.reload);
+    gulp.watch(['./style.css', './first.html', './window.js', "./lib.js"], electron.reload);
 });
