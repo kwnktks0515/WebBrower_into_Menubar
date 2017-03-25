@@ -3,14 +3,19 @@
 var electron = require('electron');
 var menubar = require('menubar');
 var Menu = electron.Menu;
+var ipc = electron.ipcMain;
 var Config = require('electron-config');
 var config = new Config();
+
+ipc.on("message" ,(ev, message) => {
+    console.log(message);
+})
 
 if(process.env.npm_package_config_mode == 0) {
     //---- Test ----
     var app = electron.app;
     var BrowserWindow = electron.BrowserWindow;
-    
+
     var mainWindow = null;
 
     app.on('window-all-closed', function() {

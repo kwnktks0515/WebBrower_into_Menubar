@@ -20,9 +20,11 @@ class tab_maneger {
         remove_element.parentNode.removeChild(remove_element);
         this._count -= 1;
     }
+    //management
     get count() {
         return this._count;
     }
+    //make
     get tab_model() {
         var fragment = document.createDocumentFragment();
         fragment.appendChild(this.input_model);

@@ -75,7 +75,8 @@ function HomePage() {
 }
 
 function Setting() {
-    
+    var ipc = require("electron").ipcRenderer
+    ipc.send("message", "ping")
 }
 
 function Mute() {
