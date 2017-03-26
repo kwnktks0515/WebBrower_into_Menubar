@@ -1,10 +1,7 @@
 'use strict';
 
-var activetab = 0;
-var dom = [];
 var input = null;
 var tab = null;
-var homepageurl = "https://google.co.jp";
 
 window.onload = function () {
     var tab_elements = document.createDocumentFragment(),
@@ -25,13 +22,11 @@ window.onload = function () {
         webview_clone.addEventListener("load-commit", (event) => {
             input.value = event.target.getURL();
             //console.log(event.target.getTitle())
-        })
-        dom.push(webview_clone);
+        }) 
         webview_elements.appendChild(webview_clone);
-        tab.add();
+        tab.add(webview_clone);
     }
-    document.getElementById("tabs").appendChild(tab_elements);
-    document.getElementById("view-container").appendChild(webview_elements);
+    tab.add_element(tab_elements, webview_elements);
 }
 
 function AddTab() {
@@ -41,54 +36,33 @@ function AddTab() {
         input.value = event.target.getURL();
         //console.log(event.target.getTitle())
     })
-    dom.push(webview_clone);
-    document.getElementById("tabs").appendChild(tab.tab_model);
-    document.getElementById("view-container").appendChild(webview_clone);
-    tab.add();
+    tab.add_element(null, webview_clone);
+    tab.add(webview_clone);
 }
 
-function RemoveTab() {
-    tab.take();
-}
+function RemoveTab() { tab.take(); }
 
 function KeyPressed(event) {
     if(event.keyCode!=13) return;
-    dom[activetab].loadURL(event.target.value);
+    tab.active.loadURL(event.target.value);
 }
 
-function Back() {
-    if(dom[activetab].canGoBack()) 
-        dom[activetab].goBack();
-}
+function Back() { tab.back(); }
 
-function Forword() {
-    if(dom[activetab].canGoForward()) 
-        dom[activetab].goForward();
-}
+function Forword() { tab.forword(); }
 
-function Reload() {
-    dom[activetab].reload();
-}
+function Reload() { tab.reload(); }
 
-function HomePage() {
-    dom[activetab].loadURL(homepageurl);
-}
+function HomePage() { tab.homepage(); }
 
 function Setting() {
     var ipc = require("electron").ipcRenderer
     ipc.send("message", "ping")
 }
 
-function Mute() {
-    if(dom[activetab].isAudioMuted())
-        dom[activetab].setAudioMuted(false);
-    else
-        dom[activetab].setAudioMuted(true);
-}
+function Mute() { tab.mute(); }
 
 function ChangeTab(num) {
-    dom[activetab].classList.add("hide");
-    activetab = num;
-    dom[activetab].classList.remove("hide");
-    input.value = dom[activetab].getURL();
+    tab.changetab(num);
+    input.value = tab.active.getURL();
 }
