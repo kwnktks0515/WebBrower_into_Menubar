@@ -6,17 +6,10 @@ class tab_maneger {
         var Config = require('electron-config');
         this.config = new Config();
         //tab information
-        this.tab_homepageurl = this.config.get("url") || "https://google.co.jp";
+        this.tab_homepageurl = this.config.get("url") || "https://www.google.co.jp";
         this.tab_count = 0;
         this.tab_active = 0;
         this.tab_views = [];
-        //element model
-        this.model_input = document.createElement("input");
-        this.model_input.className = "hide";
-        this.model_input.type = "radio";
-        this.model_input.name = "tab";
-        this.model_label = document.createElement("label");
-        this.model_view = document.createElement("webview");
         //Add destination
         this.add_tabs = document.getElementById("tabs");
         this.add_view = document.getElementById("view-container");
@@ -46,19 +39,22 @@ class tab_maneger {
         return fragment;
     }
     get input_model() {
-        var clone = this.model_input.cloneNode(true);
+        var clone = document.createElement("input");
+        clone.className = "hide";
+        clone.type = "radio";
+        clone.name = "tab";
         clone.id = "tab" + (this.tab_count + 1);
         clone.setAttribute("onclick", "ChangeTab("+this.tab_count+")");
         return clone;
     }
     get label_model() {
-        var clone = this.model_label.cloneNode(true);
+        var clone = document.createElement("label");
         clone.setAttribute("for", "tab" + (this.tab_count + 1));
         clone.textContent = "Tab" + (this.tab_count + 1);
         return clone;
     }
     get webview_model() {
-        var clone = this.model_view.cloneNode(true);
+        var clone = document.createElement("webview");
         clone.id = "view" + (this.tab_count + 1);
         clone.src = this.tab_homepageurl;
         return clone;
@@ -73,20 +69,33 @@ class tab_maneger {
     set active(num) {
         this.tab_active = num;
     }
+    get url() {
+        return this.active.getURL()
+    }
+    set url(url) {
+        this.active.loadURL(url);
+    }
+    get title() {
+        return this.active.getTitle()
+    }
     //tab function
     back() {
         if(this.active.canGoBack()) 
             this.active.goBack();
+        else
+            console.log("Can't go back");
     }
     forword() {
         if(this.active.canGoForward()) 
             this.active.goForward();
+        else
+            console.log("Can't go forword");
     }
     reload() {
         this.active.reload();
     }
     homepage() {
-        this.active.loadURL(this.tab_homepageurl);
+        this.url = this.tab_homepageurl;
     }
     setting() {
 

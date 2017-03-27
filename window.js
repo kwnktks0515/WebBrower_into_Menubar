@@ -19,10 +19,9 @@ window.onload = function () {
         //webview
         var webview_clone = tab.webview_model;
         if(i != 0) webview_clone.className = "hide";
-        webview_clone.addEventListener("load-commit", (event) => {
+        webview_clone.addEventListener("page-title-updated", (event) => {
             input.value = event.target.getURL();
-            //console.log(event.target.getTitle())
-        }) 
+        })
         webview_elements.appendChild(webview_clone);
         tab.add(webview_clone);
     }
@@ -34,7 +33,6 @@ function AddTab() {
     webview_clone.className = "hide";
     webview_clone.addEventListener("load-commit", (event) => {
         input.value = event.target.getURL();
-        //console.log(event.target.getTitle())
     })
     tab.add_element(null, webview_clone);
     tab.add(webview_clone);
@@ -64,5 +62,5 @@ function Mute() { tab.mute(); }
 
 function ChangeTab(num) {
     tab.changetab(num);
-    input.value = tab.active.getURL();
+    input.value = tab.url
 }
