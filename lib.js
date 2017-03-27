@@ -31,6 +31,19 @@ class tab_maneger {
         this.add_tabs.appendChild(tab == null ? this.tab_model : tab); 
         this.add_view.appendChild(view == null ? this.webview_model : view);
     }
+    add_event_simple(element, events) {//fix
+        /*
+        "load-commit", "did-finish-load", "did-fail-load", "did-frame-finish-load", "did-start-loading", "did-stop-loading", "did-get-response-details", "did-get-redirect-request", "dom-ready", "page-title-updated", "page-favicon-updated", "enter-html-full-screen", "leave-html-full-screen", "console-message", "found-in-page", "new-window", "will-navigate", "did-navigate", "did-navigate-in-page", "close", "ipc-message", "crashed", "gpu-crashed", "plugin-crashed", "destroyed", "media-started-playing", "media-paused", "did-change-theme-color", "update-target-url", "devtools-opened", "devtools-closed", "devtools-focused"
+        */
+        for(var count in events) {
+            element.addEventListener(events[count], (e) => {
+                console.log(e)
+            })
+        }
+    }
+    add_event_complexity(element) {//fix
+
+    }
     //make
     get tab_model() {
         var fragment = document.createDocumentFragment();
