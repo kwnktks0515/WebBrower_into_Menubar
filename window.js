@@ -8,6 +8,9 @@ window.onload = function () {
         webview_elements = document.createDocumentFragment();
     tab = new tab_maneger();
     input = document.getElementById("url");
+    tab.events = {
+        "page-title-updated": (event) => { console.log("Update"); input.value = event.target.getURL(); }
+    }
     for(var i = 0;i < 2;i++) {
         //input 
         var input_clone = tab.input_model;
@@ -19,9 +22,6 @@ window.onload = function () {
         //webview
         var webview_clone = tab.webview_model;
         if(i != 0) webview_clone.className = "hide";
-        webview_clone.addEventListener("page-title-updated", (event) => {
-            input.value = event.target.getURL();
-        })
         webview_elements.appendChild(webview_clone);
         tab.add(webview_clone);
     }
@@ -31,9 +31,6 @@ window.onload = function () {
 function AddTab() {
     var webview_clone = tab.webview_model;
     webview_clone.className = "hide";
-    webview_clone.addEventListener("load-commit", (event) => {
-        input.value = event.target.getURL();
-    })
     tab.add_element(null, webview_clone);
     tab.add(webview_clone);
 }

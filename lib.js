@@ -10,6 +10,7 @@ class tab_maneger {
         this.tab_count = 0;
         this.tab_active = 0;
         this.tab_views = [];
+        this.tab_events = {};
         //Add destination
         this.add_tabs = document.getElementById("tabs");
         this.add_view = document.getElementById("view-container");
@@ -31,18 +32,16 @@ class tab_maneger {
         this.add_tabs.appendChild(tab == null ? this.tab_model : tab); 
         this.add_view.appendChild(view == null ? this.webview_model : view);
     }
-    add_event_simple(element, events) {//fix
+    set_event(element) {
         /*
         "load-commit", "did-finish-load", "did-fail-load", "did-frame-finish-load", "did-start-loading", "did-stop-loading", "did-get-response-details", "did-get-redirect-request", "dom-ready", "page-title-updated", "page-favicon-updated", "enter-html-full-screen", "leave-html-full-screen", "console-message", "found-in-page", "new-window", "will-navigate", "did-navigate", "did-navigate-in-page", "close", "ipc-message", "crashed", "gpu-crashed", "plugin-crashed", "destroyed", "media-started-playing", "media-paused", "did-change-theme-color", "update-target-url", "devtools-opened", "devtools-closed", "devtools-focused"
         */
-        for(var count in events) {
-            element.addEventListener(events[count], (e) => {
-                console.log(e)
-            })
+        for(var key in this.tab_events) {
+            element.addEventListener(key, this.tab_events[key]);
         }
     }
-    add_event_complexity(element) {//fix
-
+    set events(obj) {
+        this.tab_events = obj;
     }
     //make
     get tab_model() {
@@ -70,6 +69,7 @@ class tab_maneger {
         var clone = document.createElement("webview");
         clone.id = "view" + (this.tab_count + 1);
         clone.src = this.tab_homepageurl;
+        this.set_event(clone);
         return clone;
     }
     //management
