@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <input type="button" class="hide" id="add" onclick="AddTab()">
+    <input type="button" class="hide" id="take" onclick="RemoveTab()">
     <input type="button" class="hide" id="back" onclick="Back()">
     <input type="button" class="hide" id="forword" onclick="Forword()">
     <input type="button" class="hide" id="reload" onclick="Reload()">
@@ -14,10 +16,9 @@
     <input type="button" class="hide" id="setting" onclick="Setting()">
     <header>
         <div id="tabs">
+            <label for="add">➕</label>
+            <label for="take">➖</label>
         </div>
-        <!--
-        <button id="add" type="button" onclick="AddTab()">➕<button>
-        -->
         <label class="icon" for="back">👈</label>
         <label class="icon" for="forword">👉</label>
         <label class="icon" for="reload">🔄</label>

@@ -24,7 +24,7 @@ class tab_maneger {
         var remove_element = document.getElementById("tab" + this.tab_count);
         remove_element.parentNode.removeChild(remove_element.nextElementSibling);
         remove_element.parentNode.removeChild(remove_element);
-        remove_element = document.getElementById("view" + this.tab_count);
+        remove_element = this.tab_views.pop();
         remove_element.parentNode.removeChild(remove_element);
         this.tab_count -= 1;
     }
