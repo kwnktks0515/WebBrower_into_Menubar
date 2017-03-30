@@ -9,25 +9,26 @@
 <body>
     <input type="button" class="hide" id="add" onclick="AddTab()">
     <input type="button" class="hide" id="take" onclick="RemoveTab()">
-    <input type="button" class="hide" id="back" onclick="Back()">
-    <input type="button" class="hide" id="forword" onclick="Forword()">
-    <input type="button" class="hide" id="reload" onclick="Reload()">
-    <input type="button" class="hide" id="homepage" onclick="HomePage()">
-    <input type="button" class="hide" id="setting" onclick="Setting()">
     <header>
         <div id="tabs">
-            <label for="add">➕</label>
-            <label for="take">➖</label>
+            <label class="icon" for="add">+</label>
+            <label class="icon" for="take">−</label>
         </div>
-        <label class="icon" for="back">👈</label>
-        <label class="icon" for="forword">👉</label>
-        <label class="icon" for="reload">🔄</label>
-        <label class="icon" for="homepage">🏠</label>
-        <input id="url" type="text" onkeydown="KeyPressed(event);">
-        <label class="icon" for="setting">⚙</label>
+        <div id="func">
+            <input type="button" class="hide" id="back" onclick="Back()">
+            <input type="button" class="hide" id="forword" onclick="Forword()">
+            <input type="button" class="hide" id="reload" onclick="Reload()">
+            <input type="button" class="hide" id="homepage" onclick="HomePage()">
+            <input type="button" class="hide" id="setting" onclick="Setting()">
+            <label class="icon" for="back">👈</label>
+            <label class="icon" for="forword">👉</label>
+            <label class="icon" for="reload">🔄</label>
+            <label class="icon" for="homepage">🏠</label>
+            <input id="url" type="text" onkeydown="KeyPressed(event);">
+            <label class="icon" for="setting">⚙</label>
+        </div>
     </header>
-    <div id="view-container">
-    </div>
+    <div id="view-container"></div>
     <script>require('electron-connect').client.create()</script>
 </body>
 </html>

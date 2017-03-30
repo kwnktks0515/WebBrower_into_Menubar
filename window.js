@@ -11,7 +11,7 @@ window.onload = function () {
     tab.events = {
         "page-title-updated": (event) => { console.log("Update"); input.value = event.target.getURL(); }
     }
-    for(var i = 0;i < 2;i++) {
+    for(var i = 0;i < 1;i++) {
         //input 
         var input_clone = tab.input_model;
         if(i == 0) input_clone.checked = true;

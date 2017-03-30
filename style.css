@@ -14,11 +14,8 @@ header {
     display: none;
 }
 
-header > #url {
-    width: calc(100% - 110px);
-}
-
-header > div {
+#tabs {
+    display: flex;
     border-bottom:ridge #000000;
 }
 
@@ -30,9 +27,22 @@ header > div {
     background-color: #51fae1;
 }
 
+#func {
+    display: flex;
+}
+
+#func > #url {
+    width: calc(100% - 100px);
+}
+
+#func > label {    
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
 #view-container {
     width:100%;
-    height:calc(100% - 50px);
+    height:calc(100% - 53px);
 }
 
 #view-container > webview {
