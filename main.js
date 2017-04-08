@@ -13,20 +13,18 @@ ipc.on("message" ,(ev, message) => {
 
 if(process.env.npm_package_config_mode == 0) {
     //---- Test ----
-    var app = electron.app;
-    var BrowserWindow = electron.BrowserWindow;
-
+    var app = electron.app,
+        BrowserWindow = electron.BrowserWindow;
     var mainWindow = null;
 
     app.on('window-all-closed', function() {
         if (process.platform != 'darwin')
             app.quit();
     });
-
     app.on('ready', function() {
         mainWindow = new BrowserWindow({width: 800, height: 600});
         mainWindow.loadURL('file://' + __dirname + '/index.html');
-            mainWindow.toggleDevTools();
+        mainWindow.toggleDevTools();
         mainWindow.on('closed', function() {
             mainWindow = null;
         });
@@ -34,9 +32,9 @@ if(process.env.npm_package_config_mode == 0) {
 } else {
     //--- Build ---
     var mb = menubar({});
-    var app = mb.app;
-    var window = mb.window;
-    var tray = mb.tray;
+    var app = mb.app,
+        window = mb.window,
+        tray = mb.tray;
 
     mb.on('ready', function() {
         WindowSetting(config.get("width"), config.get("height"), config.get("position"));

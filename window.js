@@ -43,11 +43,8 @@ function KeyPressed(event) {
 }
 
 function Back() { tab.back(); }
-
 function Forword() { tab.forword(); }
-
 function Reload() { tab.reload(); }
-
 function HomePage() { tab.homepage(); }
 
 function Setting() {
