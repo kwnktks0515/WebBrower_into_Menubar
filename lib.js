@@ -21,6 +21,10 @@ class tab_maneger {
         this.tab_count += 1;
     }
     take() {
+        if(this.tab_count - 1 == this.tab_active) {
+            document.getElementById("tab" + this.tab_active).checked = true;
+            this.changetab(this.tab_active - 1);
+        }
         var remove_element = document.getElementById("tab" + this.tab_count);
         remove_element.parentNode.removeChild(remove_element.nextElementSibling);
         remove_element.parentNode.removeChild(remove_element);
